@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<body>
+   
+
+
+
+    <div class="row align-items-center">
+        <div class="align-content-center" style="text-align: center;">
+            
+           
+            <table width="250" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+               
+                
+                <tr>
+                 
+
+                    <td>
+                        <table width="100%" cellspacing="0" cellpadding="4">
+                            <tr>
+                                                     <img src="https://github.com/Jhonylux1999/Ultranet/blob/main/logo%20ultranet.png?raw=true" style="margin-top: 5px; margin-bottom: 5px; width: 50px;"/>
+
+                                <td align="center">ULTRANET</td>
+                            </tr>
+                            <tr>
+                                <td align="center">Uspantan</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><span>Tel:</span> 4964-7515</td>
+                            </tr>
+                            <tr>
+                          <td align="center"><span>Tel:</span> 3767-6826</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><span>Correo:</span>ultranetsoporte7@gmail.com</td>
+                            </tr>
+
+                             <tr>
+                                <td align="center"><span><p id="Fecha"> </p></span></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <!--Informacion del cliente-->
+                    
+                    <td>
+                        <hr style="border-top: 1px dashed #000;">
+                        Datos del cliente
+
+                        <table width="100%" cellspacing="0" cellpadding="1">
+                            <tr>
+                                <td class="text-start"> Cliente: </td>
+                                <td class="text-start"><span id="NombreCliente"></span></td>
+                           
+                            </tr>
+
+                              <tr>
+                                <td class="text-start">Telefono: </td>
+                                <td class="text-start"> <span id="Telefono"></span></td>
+                            </tr>
+                         
+                            <tr>
+                                <td class="text-start">Direccion: </td>
+                                <td class="text-start"><span id="Direccion"></span></td>
+                            </tr>
+
+                            
+                        </table>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                            <tr>
+                                <!-- ID del ticket-->
+
+                                <td align="center" style="font-size: 12px;"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>
+                       
+                        <table width="100%" border="0" cellspacing="0" cellpadding="5" style="border-top: dashed 1px #000; border-bottom: dashed 1px #000;">
+                            <thead>
+                                <tr>
+                                    <th>Plan</th>
+                                    <th>Mes</th>
+                                    <th align="right">Total</th>
+                                </tr>
+                            </thead>
+                           
+                            <tbody>
+                              
+                                    <tr>
+                            
+                                        <td><span class="small-text"><p id="Plan"></p> </span></td>
+                                        <td><span class="small-text"> <p id="Mes"></p></span></td>
+                                        <td align="right"><span class="small-text"> <p id="Total"></p></span></td>
+                                    </tr>
+                            
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="4">
+                         
+                            <tr>
+                                <td>Forma de Pago:</td>
+                                <td align="right"><p id="FormadePago"></p> </td>
+                            </tr>
+
+                            <tr>
+                                <td>Total:</td>
+                                <td align="right"><p id="TotalFinal"></p> </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td style="border-bottom: solid 1px #000;"> </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <div class="qr-container">
+                                        
+                                  </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">ULTRANET te desea<br />-Éxito y muchas bendiciones-</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div class="container text-center mt-3">
+
+        </div>
+    </div>
+
+
+
+<script>
+
+    // Recupera los datos del localStorage
+    const Nombre = localStorage.getItem('NombreCliente');
+    const Telefono = localStorage.getItem('Telefono');
+    const Direccion = localStorage.getItem('Direccion');
+    const MesPago = localStorage.getItem('MesPago');
+    const Total = localStorage.getItem('Plan');
+    const MetodoPago = localStorage.getItem('MetodoPago');
+    const nombreplan = tipoplan(Total);
+
+document.getElementById('Plan').innerText = nombreplan;
+
+    if (Nombre) {
+        document.getElementById('NombreCliente').innerText = Nombre;
+        document.getElementById('Telefono').innerText = Telefono;
+        document.getElementById('Direccion').innerText = Direccion;
+        document.getElementById('Mes').innerText = MesPago;
+        document.getElementById('Total').innerText = Total;
+        document.getElementById('FormadePago').innerText = MetodoPago;
+        document.getElementById('TotalFinal').innerText = Total;
+
+        
+    }
+
+    // También podrías agregar la fecha actual si lo deseas
+    document.getElementById('Fecha').innerText = new Date().toLocaleDateString();
+
+    function tipoplan(Total){
+    switch(Total){
+    case "150":
+        return "15 Megas";
+        break;
+        case "175":
+            return "20 Megas";
+            break;
+            case "200":
+                return "30 Megas"
+        break;
+        default:
+            return "Plan desconocido"
+        
+
+    }
+    }
+</script>
+
+</body>
+<script src="js.js"></script>   
+
+</html>
