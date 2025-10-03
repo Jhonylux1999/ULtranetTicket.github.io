@@ -1,209 +1,116 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Ticket</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Ticket ULTRANET</title>
+  <style>
+    body {
+      width: 250px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      margin: 0;
+      padding: 0;
+    }
+    .center {
+      text-align: center;
+    }
+    hr {
+      border: none;
+      border-top: 1px dashed #000;
+      margin: 6px 0;
+    }
+    table {
+      width: 100%;
+    }
+    td {
+      padding: 2px 0;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
 <body>
-   
 
+  <div class="center">
+    <img src="https://github.com/Jhonylux1999/Ultranet/blob/main/logo%20ultranet.png?raw=true" style="width:50px;" />
+    <div><strong>ULTRANET</strong></div>
+    <div>Uspantán</div>
+    <div>Tel: 4964-7515 / 3767-6826</div>
+    <div>ultranetsoporte7@gmail.com</div>
+    <div id="Fecha"></div>
+  </div>
 
+  <hr>
 
-    <div class="row align-items-center">
-        <div class="align-content-center" style="text-align: center;">
-            
-           
-            <table width="250" cellspacing="0" cellpadding="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
-               
-                
-                <tr>
-                 
+  <div><strong>Datos del Cliente</strong></div>
+  <table>
+    <tr><td>Cliente:</td><td id="NombreCliente"></td></tr>
+    <tr><td>Teléfono:</td><td id="Telefono"></td></tr>
+    <tr><td>Dirección:</td><td id="Direccion"></td></tr>
+  </table>
 
-                    <td>
-                        <table width="100%" cellspacing="0" cellpadding="4">
-                            <tr>
-                                                     <img src="https://github.com/Jhonylux1999/Ultranet/blob/main/logo%20ultranet.png?raw=true" style="margin-top: 5px; margin-bottom: 5px; width: 50px;"/>
+  <hr>
 
-                                <td align="center">ULTRANET</td>
-                            </tr>
-                            <tr>
-                                <td align="center">Uspantan</td>
-                            </tr>
-                            <tr>
-                                <td align="center"><span>Tel:</span> 4964-7515</td>
-                            </tr>
-                            <tr>
-                          <td align="center"><span>Tel:</span> 3767-6826</td>
-                            </tr>
-                            <tr>
-                                <td align="center"><span>Correo:</span>ultranetsoporte7@gmail.com</td>
-                            </tr>
+  <table>
+    <tr><td>Plan:</td><td id="Plan"></td></tr>
+    <tr><td>Mes:</td><td id="Mes"></td></tr>
+    <tr><td>Total:</td><td id="Total"></td></tr>
+    <tr><td>Forma de Pago:</td><td id="FormadePago"></td></tr>
+  </table>
 
-                             <tr>
-                                <td align="center"><span><p id="Fecha"> </p></span></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <!--Informacion del cliente-->
-                    
-                    <td>
-                        <hr style="border-top: 1px dashed #000;">
-                        Datos del cliente
+  <hr>
 
-                        <table width="100%" cellspacing="0" cellpadding="1">
-                            <tr>
-                                <td class="text-start"> Cliente: </td>
-                                <td class="text-start"><span id="NombreCliente"></span></td>
-                           
-                            </tr>
+  <div class="center">
+    ULTRANET te desea<br>
+    —Éxito y muchas bendiciones—
+  </div>
 
-                              <tr>
-                                <td class="text-start">Telefono: </td>
-                                <td class="text-start"> <span id="Telefono"></span></td>
-                            </tr>
-                         
-                            <tr>
-                                <td class="text-start">Direccion: </td>
-                                <td class="text-start"><span id="Direccion"></span></td>
-                            </tr>
-
-                            
-                        </table>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
-                            <tr>
-                                <!-- ID del ticket-->
-
-                                <td align="center" style="font-size: 12px;"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td>
-                       
-                        <table width="100%" border="0" cellspacing="0" cellpadding="5" style="border-top: dashed 1px #000; border-bottom: dashed 1px #000;">
-                            <thead>
-                                <tr>
-                                    <th>Plan</th>
-                                    <th>Mes</th>
-                                    <th align="right">Total</th>
-                                </tr>
-                            </thead>
-                           
-                            <tbody>
-                              
-                                    <tr>
-                            
-                                        <td><span class="small-text"><p id="Plan"></p> </span></td>
-                                        <td><span class="small-text"> <p id="Mes"></p></span></td>
-                                        <td align="right"><span class="small-text"> <p id="Total"></p></span></td>
-                                    </tr>
-                            
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="4">
-                         
-                            <tr>
-                                <td>Forma de Pago:</td>
-                                <td align="right"><p id="FormadePago"></p> </td>
-                            </tr>
-
-                            <tr>
-                                <td>Total:</td>
-                                <td align="right"><p id="TotalFinal"></p> </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td style="border-bottom: solid 1px #000;"> </td>
-                            </tr>
-                            <tr>
-                                <td align="center">
-                                    <div class="qr-container">
-                                        
-                                  </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center">ULTRANET te desea<br />-Éxito y muchas bendiciones-</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-            <div class="container text-center mt-3">
-
-        </div>
-    </div>
-
-
-
-<script>
-
-    // Recupera los datos del localStorage
-    const Nombre = localStorage.getItem('NombreCliente');
-    const Telefono = localStorage.getItem('Telefono');
-    const Direccion = localStorage.getItem('Direccion');
-    const MesPago = localStorage.getItem('MesPago');
-    const Total = localStorage.getItem('Plan');
-    const MetodoPago = localStorage.getItem('MetodoPago');
-    const nombreplan = tipoplan(Total);
-
-document.getElementById('Plan').innerText = nombreplan;
-
-    if (Nombre) {
-        document.getElementById('NombreCliente').innerText = Nombre;
-        document.getElementById('Telefono').innerText = Telefono;
-        document.getElementById('Direccion').innerText = Direccion;
-        document.getElementById('Mes').innerText = MesPago;
-        document.getElementById('Total').innerText = Total;
-        document.getElementById('FormadePago').innerText = MetodoPago;
-        document.getElementById('TotalFinal').innerText = Total;
-
-        
+  <script>
+    function tipoplan(p) {
+      switch(p) {
+        case "150": return "15 Megas";
+        case "175": return "20 Megas";
+        case "200": return "30 Megas";
+        default: return "Plan desconocido";
+      }
     }
 
-    // También podrías agregar la fecha actual si lo deseas
-    document.getElementById('Fecha').innerText = new Date().toLocaleDateString();
-
-    function tipoplan(Total){
-    switch(Total){
-    case "150":
-        return "15 Megas";
-        break;
-        case "175":
-            return "20 Megas";
-            break;
-            case "200":
-                return "30 Megas"
-        break;
-        default:
-            return "Plan desconocido"
-        
-
+    function poblarDatos() {
+      document.getElementById('Fecha').innerText = new Date().toLocaleDateString();
+      document.getElementById('NombreCliente').innerText = localStorage.getItem('NombreCliente') || '';
+      document.getElementById('Telefono').innerText = localStorage.getItem('Telefono') || '';
+      document.getElementById('Direccion').innerText = localStorage.getItem('Direccion') || '';
+      document.getElementById('Mes').innerText = localStorage.getItem('MesPago') || '';
+      document.getElementById('Total').innerText = localStorage.getItem('Plan') || '';
+      document.getElementById('FormadePago').innerText = localStorage.getItem('MetodoPago') || '';
+      document.getElementById('Plan').innerText = tipoplan(localStorage.getItem('Plan'));
     }
+
+    async function generarPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'px',
+        format: [250, 600]
+      });
+
+      const nombre = localStorage.getItem('NombreCliente') || 'Cliente';
+      const fecha = new Date().toLocaleDateString().replace(/\//g, '-');
+      const nombreArchivo = `${nombre}_${fecha}.pdf`;
+
+      await doc.html(document.body, {
+        x: 10,
+        y: 10,
+        callback: function (doc) {
+          doc.save(nombreArchivo);
+        }
+      });
     }
-</script>
+
+    window.onload = function() {
+      poblarDatos();
+      generarPDF();
+    };
+  </script>
 
 </body>
-<script src="js.js"></script>   
-
 </html>
