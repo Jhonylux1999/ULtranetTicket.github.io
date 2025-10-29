@@ -91,6 +91,11 @@
           <td id="Mes"></td>
           <td id="Total"></td>
         </tr>
+         <tr>
+          <td id="cuenta"></td>
+          <td id="Messtreaming"></td>
+          <td id="Totalstreaming"></td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -116,35 +121,56 @@
     <button onclick="window.print()">Imprimir</button>
   </div>
 -->
-  <script>
-    // Recuperar datos del localStorage
-    const Nombre = localStorage.getItem('NombreCliente');
-    const Telefono = localStorage.getItem('Telefono');
-    const Direccion = localStorage.getItem('Direccion');
-    const MesPago = localStorage.getItem('MesPago');
-    const Total = localStorage.getItem('Plan');
-    const MetodoPago = localStorage.getItem('MetodoPago');
+ <script>
+  // Recuperar datos del localStorage
+  const Nombre = localStorage.getItem('NombreCliente');
+  const Telefono = localStorage.getItem('Telefono');
+  const Direccion = localStorage.getItem('Direccion');
+  const MesPago = localStorage.getItem('MesPago');
+  const Total = localStorage.getItem('Plan');
+  const MetodoPago = localStorage.getItem('MetodoPago');
+  const streaming = localStorage.getItem('Streaming');
 
-    function tipoplan(valor) {
-      switch(valor) {
-        case "150": return "15 Megas";
-        case "175": return "20 Megas";
-        case "200": return "30 Megas";
-        default: return "Plan desconocido";
-      }
+  // Calcular costos
+  const costoStreaming = parseFloat(SStreaming(streaming));
+  const costoPlan = parseFloat(Total || 0);
+  const totalFinal = costoPlan + costoStreaming;
+
+  // Mostrar datos en el ticket
+  document.getElementById('NombreCliente').innerText = Nombre || '';
+  document.getElementById('Telefono').innerText = Telefono || '';
+  document.getElementById('Direccion').innerText = Direccion || '';
+  document.getElementById('Mes').innerText = MesPago || '';
+  document.getElementById('Total').innerText = `Q${costoPlan.toFixed(2)}`;
+  document.getElementById('FormadePago').innerText = MetodoPago || '';
+  document.getElementById('TotalFinal').innerText = `Q${totalFinal.toFixed(2)}`;
+  document.getElementById('Plan').innerText = tipoplan(Total);
+  document.getElementById('Fecha').innerText = new Date().toLocaleDateString();
+  document.getElementById('cuenta').innerText = streaming || '';
+  document.getElementById('Messtreaming').innerText = MesPago || '';
+  document.getElementById('Totalstreaming').innerText = `Q${costoStreaming.toFixed(2)}`;
+
+  // Función para obtener el costo del streaming
+  function SStreaming(valor){
+    switch(valor){
+      case "Disney+": return "25";
+      case "Prime Video": return "25";
+      case "Netflix": return "25";
+      case "HBO Max": return "25";
+      default: return "0";
     }
+  }
 
-    document.getElementById('NombreCliente').innerText = Nombre || '';
-    document.getElementById('Telefono').innerText = Telefono || '';
-    document.getElementById('Direccion').innerText = Direccion || '';
-    document.getElementById('Mes').innerText = MesPago || '';
-    document.getElementById('Total').innerText = Total || '';
-    document.getElementById('FormadePago').innerText = MetodoPago || '';
-    document.getElementById('TotalFinal').innerText = Total || '';
-    document.getElementById('Plan').innerText = tipoplan(Total);
-    document.getElementById('Fecha').innerText = new Date().toLocaleDateString();
-  
-  </script>
+  // Función para mostrar el nombre del plan
+  function tipoplan(valor) {
+    switch(valor) {
+      case "150": return "15 Megas";
+      case "175": return "20 Megas";
+      case "200": return "30 Megas";
+      default: return "Plan desconocido";
+    }
+  }
+</script>
 
 </body>
 </html>

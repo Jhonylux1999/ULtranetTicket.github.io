@@ -58,7 +58,7 @@
                             </select>    
                         </div>
 
-                          <div class="form-group">
+                         <div class="form-group">
                             <select class="form-select" aria-label="Default select example" id="MetodoPago"> 
                                 <option selected>Forma de Pago</option>
                                 <option value="Efectivo">Efectivo</option>
@@ -66,9 +66,19 @@
                                 <option value="Deposito">Deposito</option>
                                 <option value="Tarjeta">Tarjeta</option>
                             </select>    
-                        </div>
+                         </div>
 
-                       
+                          <div class="form-group">
+                            <select class="form-select" aria-label="Default select example" id="streaming"> 
+                                <option selected>Cuentas streaming</option>
+                                <option value="Disney+">Disney+</option>
+                                <option value="Prime Video">Prime Video</option>
+                                <option value="Netflix">Netflix</option>
+                                <option value="HBO Max">HBO Max</option>
+                            </select>    
+                         </div>
+
+
                     </div>
                  
                 </div>
@@ -117,7 +127,7 @@
         document.getElementById('plan').selectedIndex = 0;
         document.getElementById('MesPago').selectedIndex = 0;
         document.getElementById('MetodoPago').selectedIndex = 0;
-
+        document.getElementById('streaming').selectedIndex = 0;
         localStorage.clear();
 
 
@@ -140,7 +150,8 @@
         const Plan = document.getElementById('plan').value;
         const MesPago = document.getElementById('MesPago').value;
         const MetodoPago = document.getElementById('MetodoPago').value;
-          
+        const cuentasStreaming = document.getElementById('streaming').value;
+        
 
         localStorage.setItem('NombreCliente', texto); // Almacena el texto en localStorage
         localStorage.setItem('Direccion', Direccion);
@@ -148,6 +159,7 @@
         localStorage.setItem('Plan', Plan);
         localStorage.setItem('MesPago', MesPago);
         localStorage.setItem('MetodoPago', MetodoPago);
+        localStorage.setItem('Streaming', cuentasStreaming);
         
         $('#miModal').modal('show'); // Muestra el modal
     }
