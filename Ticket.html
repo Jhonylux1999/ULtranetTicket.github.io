@@ -57,7 +57,7 @@
   <div class="center section">
     <!--<img src="https://github.com/Jhonylux1999/Ultranet/blob/main/logo%20ultranet.png?raw=true" style="width: 50px;" />
   --> 
-    <img src="https://github.com/Jhonylux1999/Ultranet/blob/main/Ultranet%20Navidad.png?raw=true" style="width: 50px;" />
+    <img src="https://github.com/Jhonylux1999/Ultranet/blob/main/Ultranet%20Navidad2.png?raw=true" style="width: 50px;" />
     
     <div class="bold">ULTRANET</div>
     <div>Uspantán</div>
@@ -74,7 +74,9 @@
       <tr><td>Cliente:</td><td id="NombreCliente"></td></tr>
       <tr><td>Teléfono:</td><td id="Telefono"></td></tr>
       <tr><td>Dirección:</td><td id="Direccion"></td></tr>
+      <tr><td>Codigo Sorteo:</td><td id="Codigo"></td></tr>
     </table>
+
   </div>
 
   <hr>
@@ -128,11 +130,13 @@
   // Recuperar datos del localStorage
   const Nombre = localStorage.getItem('NombreCliente');
   const Telefono = localStorage.getItem('Telefono');
+  const Codigo = localStorage.getItem('Codigo');
   const Direccion = localStorage.getItem('Direccion');
   const MesPago = localStorage.getItem('MesPago');
   const Total = localStorage.getItem('Plan');
   const MetodoPago = localStorage.getItem('MetodoPago');
   const streaming = localStorage.getItem('Streaming');
+
 
   // Calcular costos
   const costoStreaming = parseFloat(SStreaming(streaming));
@@ -142,6 +146,7 @@
   // Mostrar datos en el ticket
   document.getElementById('NombreCliente').innerText = Nombre || '';
   document.getElementById('Telefono').innerText = Telefono || '';
+  document.getElementById('Codigo').innerText = Codigo ||'';
   document.getElementById('Direccion').innerText = Direccion || '';
   document.getElementById('Mes').innerText = MesPago || '';
   document.getElementById('Total').innerText = `Q${costoPlan.toFixed(2)}`;

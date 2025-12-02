@@ -29,6 +29,10 @@
                         <div class="form-group">
                             <input type="text" name="txtPhone" class="form-control" placeholder="Telefono" value="" id="Telefono"/>
                         </div>
+
+                         <div class="form-group">
+                            <input type="text" name="txtCodigo" class="form-control" placeholder="Codigo" value="" id="Codigo"/>
+                        </div>
                     
                         <div class="form-group">
                             <select class="form-select" aria-label="Default select example" id="plan">
@@ -124,6 +128,7 @@
         document.getElementById('Nombre').value = "";
        document.getElementById('Direccion').value = "";
         document.getElementById('Telefono').value = "";
+        document.getElementById('Codigo').value = "";
         document.getElementById('plan').selectedIndex = 0;
         document.getElementById('MesPago').selectedIndex = 0;
         document.getElementById('MetodoPago').selectedIndex = 0;
@@ -147,6 +152,7 @@
         const texto = document.getElementById('Nombre').value;
         const Direccion = document.getElementById('Direccion').value;
         const Telefono = document.getElementById('Telefono').value;
+        const Codigo = document.getElementById('Codigo').value;
         const Plan = document.getElementById('plan').value;
         const MesPago = document.getElementById('MesPago').value;
         const MetodoPago = document.getElementById('MetodoPago').value;
@@ -156,6 +162,7 @@
         localStorage.setItem('NombreCliente', texto); // Almacena el texto en localStorage
         localStorage.setItem('Direccion', Direccion);
         localStorage.setItem('Telefono', Telefono);
+        localStorage.setItem('Codigo', Codigo);
         localStorage.setItem('Plan', Plan);
         localStorage.setItem('MesPago', MesPago);
         localStorage.setItem('MetodoPago', MetodoPago);
