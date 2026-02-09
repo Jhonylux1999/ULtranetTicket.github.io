@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket ULTRANET</title>
+  <style>
+    body {
+      width: 250px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      margin: 0;
+      padding: 0;
+    }
+    .center {
+      text-align: center;
+    }
+    hr {
+      border: none;
+      border-top: 1px dashed #000;
+      margin: 6px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 2px;
+      text-align: left;
+    }
+    th {
+      border-bottom: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center">
+    <img src="https://github.com/Jhonylux1999/Ultranet/blob/main/logo%20ultranet.png?raw=true" style="width:50px;" />
+    <div><strong>ULTRANET</strong></div>
+    <div>Uspantán</div>
+    <div>Tel: 4964-7515 / 3767-6826</div>
+    <div>ultranetsoporte7@gmail.com</div>
+  </div>
+  <hr>
+<div class="center">
+<div><strong>Datos Del Cliente</strong></div> 
+</div>
+  <div>
+    <strong>Fecha y Hora:</strong> <span id="FechaHora"></span><br>
+    <strong>Nombre: </strong> <span id="Nombre"></span><br>
+    <strong>NIT Cliente:</strong> <span id="NitCliente"></span><br>
+    <strong>DTE:</strong> <span id="Certificacion"></span><br>
+    <strong>Serie: </strong> <span id="Serie"></span> <br>
+    <strong>Numero Autorizacion; </strong> <span id="NumeroAutorizacion"></span>
+  </div>
+  
+  <hr>
+
+  <table id="tablaProductos">
+    <thead>
+      <tr>
+        <th>Descripción</th>
+        <th>Cant.</th>
+        <th>Precio</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <hr>
+
+  <div class="center">
+    ULTRANET te desea<br>
+    —Éxito y muchas bendiciones—
+    <p class="text-muted" style="font-size: 11px;">
+          Desarrollado por Grupo MayaTéch <br>Tel: +502 4086-2520
+    </p>
+  </div>
+
+  <script>
+
+
+    function poblarDatos() {
+      // Recuperar productos
+      let productos = JSON.parse(localStorage.getItem('Productos')) || [];
+      let cuerpoTabla = document.querySelector("#tablaProductos tbody");
+
+      productos.forEach(p => {
+        let fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${p.Descripcion}</td>
+          <td>${p.Cantidad}</td>
+          <td>Q${p.PrecioUnitario}</td>
+          <td>Q${p.Total}</td>
+        `;
+        cuerpoTabla.appendChild(fila);
+      });
+      // 🔹 Calcular el total general 
+      let totalGeneral = productos.reduce((suma, p) => suma + p.Total, 0); 
+      // 🔹 Crear fila de total 
+      let filaTotal = document.createElement("tr"); filaTotal.innerHTML = ` <td colspan="3" style="text-align:right; font-weight:bold;">TOTAL</td> <td style="font-weight:bold;">Q${totalGeneral}</td> `;
+      cuerpoTabla.appendChild(filaTotal);
+    }
+
+    function encabezado(){
+let Nombrecliente = localStorage.getItem("nombrereceptor");
+let Nit = localStorage.getItem("NitReceptor");
+let FechaEmision = localStorage.getItem("Fecha_Emision");
+let DTE = localStorage.getItem("DTE");
+let serieAutorizacion = localStorage.getItem("SerieAutorizacion");
+let numeroAutorizacion = localStorage.getItem("NumeroAutorizacion");
+console.log("NIT", Nit);
+
+document.getElementById("FechaHora").textContent = ConvertirFecha_ISO8601Emision(FechaEmision);
+document.getElementById("Nombre").textContent = Nombrecliente;
+document.getElementById("NitCliente").textContent = Nit ;
+document.getElementById("Certificacion").textContent = DTE;
+document.getElementById("Serie").textContent = serieAutorizacion;
+document.getElementById("NumeroAutorizacion").textContent = numeroAutorizacion;
+
+    }
+
+function ConvertirFecha_ISO8601Emision(fecha) {
+    let fechaObj = new Date(fecha);
+
+    // Obtener partes de la fecha
+    let dia = fechaObj.getDate().toString().padStart(2, "0");
+    let mes = (fechaObj.getMonth() + 1).toString().padStart(2, "0"); // meses van de 0 a 11
+    let anio = fechaObj.getFullYear();
+
+    // Obtener hora en formato 24h
+    let horas = fechaObj.getHours().toString().padStart(2, "0");
+    let minutos = fechaObj.getMinutes().toString().padStart(2, "0");
+    let segundos = fechaObj.getSeconds().toString().padStart(2, "0");
+
+    // Construir formato deseado
+    let fechaLegible = `${dia}/${mes}/${anio} ${horas}:${minutos}:${segundos}`;
+
+    return fechaLegible;
+}
+
+    window.onload = poblarDatos;
+    encabezado();
+  </script>
+
+</body>
+</html>

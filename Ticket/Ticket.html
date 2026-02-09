@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket de Pago</title>
+  <style>
+    body {
+      width: 250px; /* ideal para 58 mm impresora térmica */
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .section {
+      margin-bottom: 8px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed #000;
+      margin: 6px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 2px 0;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    @media print {
+      body {
+        width: 250px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center section">
+    <!--<img src="https://github.com/Jhonylux1999/Ultranet/blob/main/logo%20ultranet.png?raw=true" style="width: 50px;" />
+  --> 
+    <img src="https://github.com/Jhonylux1999/Ultranet/blob/main/logo%20ultranet.png?raw=true" style="width: 50px;" />
+    
+    <div class="bold">ULTRANET</div>
+    <div>Uspantán</div>
+    <div>Tel: 4964-7515 / 3767-6826</div>
+    <div>ultranetsoporte7@gmail.com</div>
+    <div id="Fecha"></div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="bold">Datos del Cliente</div>
+    <table>
+      <tr><td>Cliente:</td><td id="NombreCliente"></td></tr>
+      <tr><td>Teléfono:</td><td id="Telefono"></td></tr>
+      <tr><td>Dirección:</td><td id="Direccion"></td></tr>
+      <!--<tr><td>Codigo Sorteo:</td><td id="Codigo"></td></tr>-->
+    </table>
+
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <table>
+      <thead>
+        <tr class="bold">
+          <td>Plan</td>
+          <td>Mes</td>
+          <td>Total</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="Plan"></td>
+          <td id="Mes"></td>
+          <td id="Total"></td>
+        </tr>
+         <tr>
+          <td id="cuenta"></td>
+          <td id="Messtreaming"></td>
+          <td id="Totalstreaming"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <table>
+      <tr><td>Forma de Pago:</td><td id="FormadePago"></td></tr>
+      <tr><td class="bold">Total:</td><td id="TotalFinal"></td></tr>
+    </table>
+  </div>
+
+  <hr>
+
+   <div class="section center">
+    ULTRANET te desea<br>
+    —Éxito y muchas bendiciones—
+    <p class="text-muted" style="font-size: 11px;">
+          Desarrollado por Grupo MayaTéch <br> Tel: +502 4086-2520
+    </p>
+   </div>
+
+  <!--
+  <div class="center no-print">
+    <button onclick="window.print()">Imprimir</button>
+  </div>
+-->
+ <script>
+  // Recuperar datos del localStorage
+  const Nombre = localStorage.getItem('NombreCliente');
+  const Telefono = localStorage.getItem('Telefono');
+  const Codigo = localStorage.getItem('Codigo');
+  const Direccion = localStorage.getItem('Direccion');
+  const MesPago = localStorage.getItem('MesPago');
+  const Total = localStorage.getItem('Plan');
+  const MetodoPago = localStorage.getItem('MetodoPago');
+  const streaming = localStorage.getItem('Streaming');
+
+
+  // Calcular costos
+  const costoStreaming = parseFloat(SStreaming(streaming));
+  const costoPlan = parseFloat(Total || 0);
+  const totalFinal = costoPlan + costoStreaming;
+
+  // Mostrar datos en el ticket
+  document.getElementById('NombreCliente').innerText = Nombre || '';
+  document.getElementById('Telefono').innerText = Telefono || '';
+  //document.getElementById('Codigo').innerText = Codigo ||'';
+  document.getElementById('Direccion').innerText = Direccion || '';
+  document.getElementById('Mes').innerText = MesPago || '';
+  document.getElementById('Total').innerText = `Q${costoPlan.toFixed(2)}`;
+  document.getElementById('FormadePago').innerText = MetodoPago || '';
+  document.getElementById('TotalFinal').innerText = `Q${totalFinal.toFixed(2)}`;
+  document.getElementById('Plan').innerText = tipoplan(Total);
+  document.getElementById('Fecha').innerText = new Date().toLocaleDateString();
+  document.getElementById('cuenta').innerText = streaming || '';
+  document.getElementById('Messtreaming').innerText = MesPago || '';
+  document.getElementById('Totalstreaming').innerText = `Q${costoStreaming.toFixed(2)}`;
+
+  // Función para obtener el costo del streaming
+  function SStreaming(valor){
+    switch(valor){
+      case "Disney+": return "25";
+      case "Prime Video": return "25";
+      case "Netflix": return "25";
+      case "HBO Max": return "25";
+      case "Tv": return "35";
+      default: return "0";
+    }
+  }
+
+  // Función para mostrar el nombre del plan
+  function tipoplan(valor) {
+    switch(valor) {
+      case "150": return "15 Megas";
+      case "175": return "20 Megas";
+      case "200": return "30 Megas";
+      default: return "Plan desconocido";
+    }
+  }
+</script>
+
+</body>
+</html>
